@@ -1,0 +1,28 @@
+<h3>
+    Welcome to Mondia Media Online movies
+</h3>
+<mat-card class="userInfoCard" *ngIf="currentUser">
+  <mat-card-header>
+      <mat-card-title>Hello {{ currentUser.username }}, you are logged in successfully </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <p>
+          Your AccessToken: {{ currentUser.accessToken }}
+      </p>
+    </mat-card-content>
+</mat-card>
+<br>
+
+<div *ngIf="movies">
+<mat-card class="myCard" *ngFor="let movie of movies">
+    <mat-card-header>
+      <mat-card-title>{{ movie.title }}</mat-card-title>
+      <mat-card-subtitle>Rate: {{ movie.rate }}/10</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+          {{ movie.description }}
+      </p>
+    </mat-card-content>
+</mat-card>
+</div>

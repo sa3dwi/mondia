@@ -1,0 +1,27 @@
+<header>
+  <div class="container">
+    <mat-toolbar>
+      <span>
+          <a routerLink="/" class="logo">
+            <img src="./../../assets/img/mondia-logo.png">
+          </a>
+      </span>
+      <nav>
+        <ul>
+          <li><a routerLink="/">Home</a></li>
+          <button mat-button [matMenuTriggerFor]="menu">Categories</button>
+          <mat-menu #menu="matMenu">
+            <a routerLink="/category/{{cat.id}}" mat-menu-item *ngFor="let cat of categories">
+             {{cat.name}}
+            </a>
+          </mat-menu>
+          <li><a routerLink="/list">List Movies</a></li>
+          <li><a routerLink="/login">Login</a></li>
+          <!-- TODO: add logout only when user is logged in [style.display]="currentUser"  -->
+          <li><a routerLink="/logout">Logout</a></li>
+        </ul>
+      </nav>
+    </mat-toolbar>
+  </div>
+</header>
+

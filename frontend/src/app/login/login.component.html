@@ -1,0 +1,57 @@
+﻿<div>
+    <br><br>
+<mat-card class="loginCard">
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Username" type="text" formControlName="username" minlength="3" maxlength="20" #username required />
+                   <mat-error *ngIf="loginForm.submitted && loginForm.controls['username'].errors" class="invalid-feedback">
+                        <div *ngIf="loginForm.submitted && loginForm.controls['username'].errors.required">Username is required</div>
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls['username'].errors?.minlength">
+                        Username must be at least 3 characters long.
+                    </mat-error>
+                   <mat-error *ngIf="loginForm.controls['username'].errors?.maxlength">
+                      Username must be less than 20 characters.
+                   </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+              <td><mat-form-field class="example-full-width">
+                <input matInput placeholder="Password" type="password" formControlName="password" minlength="6" maxlength="40" #password required />
+                <mat-error *ngIf="loginForm.submitted && loginForm.controls['password'].errors" class="invalid-feedback">
+                    <div *ngIf="loginForm.submitted && loginForm.controls['password'].errors.required">Password is required</div>
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].errors?.minlength">
+                    Password must be at least 6 characters long.
+               </mat-error>
+               <mat-error *ngIf="loginForm.controls['password'].errors?.maxlength">
+                  Password must be less than 40 characters.
+               </mat-error>
+              </mat-form-field></td>
+            </tr>
+            </table>
+            <mat-card-actions>
+              <button mat-raised-button [disabled]="loading" type="submit" color="primary">Login</button>
+            </mat-card-actions>
+        </form>
+        </mat-card-content>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <div>
+          Username: mondia<br />
+          Password: mondia
+        </div>
+        <br>
+        <div>
+          Use this link to create a new user
+          <a routerLink="/signup">SignUp</a>
+        </div>
+</mat-card>
+</div>

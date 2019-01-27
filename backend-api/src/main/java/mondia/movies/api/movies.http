@@ -1,0 +1,16 @@
+# Movies API
+
+GET {{host-url}}/movies/all
+###
+
+
+GET {{host-url}}/categories/all
+###
+
+GET {{host-url}}/movies/movie/7e249c4a-bdf7-4d33-81a2-1043383cc225
+###
+
+
+DELETE {{host-url}}/movies/delete/7e249c4a-bdf7-4d33-81a2-1043383cc225
+###
+

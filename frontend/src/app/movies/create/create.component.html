@@ -1,0 +1,45 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Add A New Movie</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Movie Title" formControlName="title" minlength="3" maxlength="50" #title required>
+        <mat-error *ngIf="createForm.submitted && createForm.controls['title'].errors.required">
+          Title is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['title'].errors?.minlength">
+            Title must be at least 3 characters long.
+        </mat-error>
+       <mat-error *ngIf="createForm.controls['title'].errors?.maxlength">
+          Title must be less than 50 characters.
+       </mat-error>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <textarea matInput placeholder="Description" formControlName="description" #description></textarea>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-select placeholder="Category" formControlName="category" #category>
+              <mat-option *ngFor="let item of categoryList" [value]="item.id">{{item.name}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <br><br>
+      <div> Movie Rate: </div>
+      <mat-slider formControlName="rate" #rate thumbLabel [displayWith]="formatLabel" tickInterval="10" min="1" value="2" max="10"></mat-slider>
+      <mat-error *ngIf="createForm.controls['rate'].errors?.minlength">
+          Rate must be at least 1
+      </mat-error>
+     <mat-error *ngIf="createForm.controls['rate'].errors?.maxlength">
+        Rate must be less than 10
+     </mat-error>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="addMovie('', title.value, description.value, rate.value, category.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,64 @@
+﻿<div>
+    <br><br>
+<mat-card class="loginCard">
+        <mat-card-header>
+          <mat-card-title>Sign Up Form</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form novalidate [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name" type="text" formControlName="name" minlength="3" maxlength="50" #name required />
+                    <mat-error *ngIf="signUpForm.submitted && signUpForm.controls['name'].errors" class="invalid-feedback">
+                        <div *ngIf="signUpForm.submitted && signUpForm.controls['name'].errors.required">Name is required</div>
+                    </mat-error>
+                    <mat-error *ngIf="signUpForm.controls['name'].errors?.minlength">
+                        Name must be at least 3 characters long.
+                    </mat-error>
+                   <mat-error *ngIf="signUpForm.controls['name'].errors?.maxlength">
+                      Name must be less than 50 characters.
+                   </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Username" type="text" formControlName="username" minlength="3" maxlength="20" #username required />
+                   <mat-error *ngIf="signUpForm.submitted && signUpForm.controls['username'].errors" class="invalid-feedback">
+                        <div *ngIf="signUpForm.submitted && signUpForm.controls['username'].errors.required">Username is required</div>
+                    </mat-error>
+                    <mat-error *ngIf="signUpForm.controls['username'].errors?.minlength">
+                        Username must be at least 3 characters long.
+                    </mat-error>
+                   <mat-error *ngIf="signUpForm.controls['username'].errors?.maxlength">
+                      Username must be less than 20 characters.
+                   </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+              <td><mat-form-field class="example-full-width">
+                <input matInput placeholder="Password" type="password" formControlName="password" minlength="6" maxlength="20" #password required />
+                <mat-error *ngIf="signUpForm.submitted && signUpForm.controls['password'].errors" class="invalid-feedback">
+                    <div *ngIf="signUpForm.submitted && signUpForm.controls['password'].errors.required">Password is required</div>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.controls['password'].errors?.minlength">
+                    Password must be at least 6 characters long.
+               </mat-error>
+               <mat-error *ngIf="signUpForm.controls['password'].errors?.maxlength">
+                  Password must be less than 40 characters.
+               </mat-error>
+              </mat-form-field></td>
+            </tr>
+            </table>
+            <mat-card-actions>
+              <button mat-raised-button [disabled]="loading" type="submit" color="primary">Save</button>
+            </mat-card-actions>
+        </form>
+        </mat-card-content>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+</mat-card>
+</div>

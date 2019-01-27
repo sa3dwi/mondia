@@ -1,0 +1,21 @@
+<br><br>
+<div *ngIf="category">
+<h3>
+  Category Name: {{category.name}}
+  <h5>
+      Number of Movies: {{category.nbOfMovies}}
+  </h5>
+</h3>
+<br>
+    <mat-card class="myCard" *ngFor="let movie of category.movies">
+        <mat-card-header>
+          <mat-card-title>{{ movie.title }}</mat-card-title>
+          <mat-card-subtitle>Rate: {{ movie.rate }}/10</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+              {{ movie.description }}
+          </p>
+        </mat-card-content>
+    </mat-card>
+</div>  
