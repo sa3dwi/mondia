@@ -8,6 +8,10 @@ The project contains:
 3. List movies by category
 3. Login/Registration
 
+## Install Dependencies 
+
+Run `npm install` to install node modules. 
+If you face any errors with node-sass use the command `npm install node-sass@latest` to fix the issue.
 
 ## Development server
 
