@@ -1,4 +1,4 @@
-# Mondia Movies Online Database
+# Movies Online Database sample
 
 This project was using Angular 6 and SpringBoot.
 
